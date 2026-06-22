@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="nouzen_ros2_control" params="name">
+
+    <ros2_control name="${name}" type="system">
+      <hardware>
+        <plugin>nouzen_bringup/NouzenHardwareInterface</plugin>
+        <!-- ESP32 Serial Port -->
+        <param name="serial_port">/dev/ttyUSB0</param>
+        <param name="serial_baud">115200</param>
+        <param name="loop_rate">30.0</param>
+        <!-- PID Parameters -->
+        <param name="kp">140.0</param>
+        <param name="kd">20.0</param>
+        <param name="ki">100.0</param>
+        <param name="ko">20.0</param>
+      </hardware>
+
+      <!-- 4 WHEEL JOINTS -->
+      <joint name="front_left_wheel_joint">
+        <command_interface name="velocity"/>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+        <state_interface name="speed_feedback"/>
+        <!-- JGB37-520: 11 PPR × 40:1 ratio × 4 edges = 1760 ticks/rev -->
+        <param name="encoder_ticks_per_revolution">2400</param>
+        <param name="motor_index">0</param> <!-- M1 on ESP32 -->
+      </joint>
+
+      <joint name="rear_left_wheel_joint">
+        <command_interface name="velocity"/>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+        <state_interface name="speed_feedback"/>
+        <param name="encoder_ticks_per_revolution">2400</param>
+        <param name="motor_index">1</param> <!-- M2 on ESP32 -->
+      </joint>
+
+      <joint name="front_right_wheel_joint">
+        <command_interface name="velocity"/>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+        <state_interface name="speed_feedback"/>
+        <param name="encoder_ticks_per_revolution">2400</param>
+        <param name="motor_index">2</param> <!-- M3 on ESP32 -->
+      </joint>
+
+      <joint name="rear_right_wheel_joint">
+        <command_interface name="velocity"/>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+        <state_interface name="speed_feedback"/>
+        <param name="encoder_ticks_per_revolution">2400</param>
+        <param name="motor_index">3</param> <!-- M4 on ESP32 -->
+      </joint>
+
+      <!-- ESP32 TELEMETRY SENSOR -->
+      <sensor name="esp32_controller">
+        <state_interface name="battery_voltage"/>
+        <state_interface name="error_status"/>
+      </sensor>
+
+    </ros2_control>
+
+  </xacro:macro>
+
+</robot>

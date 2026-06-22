@@ -1,0 +1,19 @@
+<library path="nouzen_hardware_interface">
+  <class name="nouzen_bringup/NouzenHardwareInterface"
+         type="nouzen_bringup::NouzenHardwareInterface"
+         base_class_type="hardware_interface::SystemInterface">
+    <description>
+      NOUZEN 4WD Robot Hardware Interface for ESP32 Bridge
+    </description>
+  </class>
+</library>
+
+<library path="nouzen_battery_broadcaster">
+  <class name="nouzen_bringup/BatteryBroadcaster"
+         type="nouzen_bringup::BatteryBroadcaster"
+         base_class_type="controller_interface::ControllerInterface">
+    <description>
+      Battery state broadcaster for NOUZEN robot
+    </description>
+  </class>
+</library>

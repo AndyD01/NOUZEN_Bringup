@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<robot name="nouzen" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- Include all components -->
+  <xacro:include filename="nouzen_materials.xacro"/>
+  <xacro:include filename="nouzen_description.xacro"/>
+  <xacro:include filename="nouzen_ros2_control.xacro"/>
+
+  <!-- Instantiate robot geometry -->
+  <xacro:nouzen_base/>
+
+  <!-- Instantiate ROS2 control -->
+  <xacro:nouzen_ros2_control name="nouzen_system"/>
+
+</robot>

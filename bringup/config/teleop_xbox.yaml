@@ -1,0 +1,28 @@
+teleop_twist_joy_node:
+  ros__parameters:
+    # Esperanza Controller (Xbox360 compatible)
+    
+    axis_linear:
+      x: 1      # Left stick sus/jos
+      
+    axis_angular:
+      yaw: 3    # Right stick stânga/dreapta
+    
+    scale_linear:
+      x: 1.0
+    
+    scale_angular:
+      yaw: 2.0
+    
+    scale_linear_turbo:
+      x: 2.0
+      
+    scale_angular_turbo:
+      yaw: 3.5
+    
+    enable_button: 4
+    enable_turbo_button: 5
+    
+    require_enable_button: true
+    publish_rate: 30.0
+    publish_stamped_twist: true  # ADAUGĂ ASTA!
